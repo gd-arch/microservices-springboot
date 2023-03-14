@@ -1,0 +1,21 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: CONFIG-SERVER
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/amidguardian/microservices-config-server
+          clone-on-start: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+    fetch-registry: 'true'
+    register-with-eureka: 'true'
+  instance:
+    prefer-ip-address: 'true'
