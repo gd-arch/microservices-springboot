@@ -1,4 +1,4 @@
-package com.flux.Apigateway;
+package com.flux.apigateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

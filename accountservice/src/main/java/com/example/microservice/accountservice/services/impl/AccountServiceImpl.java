@@ -30,8 +30,7 @@ public class AccountServiceImpl implements AccountService{
 
     @Autowired
     private AccountRepository accountRepository;
-//    @Autowired
-//    private CustomerService customerService;
+
     @Autowired
     private WebClient.Builder webclientBuilder;
     @Autowired
@@ -76,7 +75,7 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public boolean depositMoneyToAccount(AccountInfo accountInfo) {
         Account accountFromDb=accountRepository.findByAccountNo(accountInfo.getAccountNo()).orElseThrow(()->new ResourceNotFoundException("Account with number "+accountInfo.getAccountNo()+" not found "));
-        //TODO:check password
+        
         if(verifyCustomerDetailsUsingWebClient(accountFromDb.getCustomerId(),accountInfo.getAccountHolderName())){
             accountFromDb.setBalance(accountFromDb.getBalance()+accountInfo.getAmount());
             accountRepository.save(accountFromDb);
@@ -89,8 +88,7 @@ public class AccountServiceImpl implements AccountService{
     public boolean withdrawMoneyFromAccount(AccountInfo accountInfo) {
         Account accountFromDb=accountRepository.findByAccountNo(accountInfo.getAccountNo()).orElseThrow(()->new ResourceNotFoundException("Account with number "+accountInfo.getAccountNo()+" not found "));
         log.info(accountFromDb.toString());
-       //TODO:check password
-       //TODO:check if money in database account is greater than amount of money to withdraw throw insufficient Balance Exception if not
+        //check 
         if(verifyCustomerDetails(accountFromDb.getCustomerId(),accountInfo.getAccountHolderName())){
         accountFromDb.setBalance(accountFromDb.getBalance()-accountInfo.getAmount());
         accountRepository.save(accountFromDb);

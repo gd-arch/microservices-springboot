@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
-public class UserservApplication {
+public class CustomerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserservApplication.class, args);
+		SpringApplication.run(CustomerApplication.class, args);
 	}
 	@Bean
 	public RestTemplate restTemplate(){
